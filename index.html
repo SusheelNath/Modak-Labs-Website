@@ -166,7 +166,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
 .g3.is-active .what-card.is-minimized[data-slot="top"]{grid-column:2;grid-row:1;align-self:start;}
 .g3.is-active .what-card.is-minimized[data-slot="bottom"]{grid-column:2;grid-row:2;align-self:start;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--rim);border:1px solid var(--rim);border-radius:10px;overflow:hidden;}
-.g4-cell{background:var(--mid);padding:24px 22px;}
+.g4-cell{background:var(--mid);padding:24px 22px;position:relative;overflow:hidden;}
 .g4-cell:hover{background:var(--surface);}
 .mb16{margin-bottom:16px;}
 .mb20{margin-bottom:20px;}
@@ -1361,6 +1361,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
 </style>
 </head>
 <body>
+<div id="scrollProgress" style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:99999;pointer-events:none;transition:none;"></div>
 <!-- ════ MOBILE NAV ════ -->
 <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Site navigation">
   <div class="mob-nav-hdr">
@@ -1443,7 +1444,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
             </div>
           </div>
           <div class="hero-right">
-            <div class="hero-stat"><div class="stat-num">50+</div><div class="stat-label">Researchers across two<br>international university partner labs</div></div>
+            <div class="hero-stat"><div class="stat-num">60+</div><div class="stat-label">Researchers across two<br>international university partner labs</div></div>
             <div class="hero-stat"><div class="stat-num">3</div><div class="stat-label">Continents with active<br>project deliverables</div></div>
             <div class="hero-stat"><div class="stat-num">6</div><div class="stat-label">Production-shipped case studies<br>across five sectors</div></div>
           </div>
@@ -1453,7 +1454,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
       <!-- Trust strip -->
       <div class="trust-strip">
         <div class="trust-tabs">
-          <button class="trust-tab is-active" onclick="switchTrustTab('delivered')" data-trust="delivered">Delivered for</button>
+          <button class="trust-tab is-active" onclick="switchTrustTab('delivered')" data-trust="delivered">Portfolio</button>
           <button class="trust-tab" onclick="switchTrustTab('credentials')" data-trust="credentials">Credentials</button>
         </div>
         <div class="trust-panel is-active" id="trust-delivered">
@@ -1646,26 +1647,26 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
             <div class="eyebrow" style="margin-bottom:16px;">Why we're different</div>
             <div class="display-md" style="font-size:22px;margin-bottom:17px;">Where academic depth meets applied innovation.</div>
             <p class="body-md" style="margin-bottom:14px;font-size:15px;">Our core R&amp;D is developed in collaboration with leading university labs, combining international research capabilities in spatial computing and built-environment intelligence.</p>
-            <p class="body-md" style="margin-bottom:2px;font-size:15px;">With an internationally experienced team of researchers and industry experts, we deliver high-quality solutions across XR, digital twins, and HCI.</p>
+            <p class="body-md" style="margin-bottom:2px;font-size:15px;">With an internationally experienced team of researchers and industry experts, we deliver high-quality solutions across XR, digital twins, and HCI, bringing academic rigour and standards-grade methodology to every commercial engagement.</p>
           </div>
           <div style="padding:36px;">
             <div class="eyebrow" style="margin-bottom:17px;">Our Four Pillars</div>
             <div class="g4" style="grid-template-columns:1fr 1fr;margin-top:4px;border-radius:8px;overflow:hidden;">
-              <div class="g4-cell" style="padding:18px 16px;">
+              <div class="g4-cell" style="padding:18px 16px;" data-pillar="understand">
                 <div style="font-size:15px;font-weight:400;color:var(--white);margin-bottom:6px;">Understand first</div>
-                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Your vision first. Technology comes next.</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Every project begins with structured discovery — mapping stakeholder needs, data landscapes, and technical constraints before a single line of code is written.</div>
               </div>
-              <div class="g4-cell" style="padding:18px 16px;">
+              <div class="g4-cell" style="padding:18px 16px;" data-pillar="research">
                 <div style="font-size:15px;font-weight:400;color:var(--white);margin-bottom:6px;">Research-validated</div>
-                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Academic-led. Industry-built. Realised with precision.</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Our methods are developed in collaboration with university research labs and validated against peer-reviewed standards — not just industry best-practice.</div>
               </div>
-              <div class="g4-cell" style="padding:18px 16px;">
+              <div class="g4-cell" style="padding:18px 16px;" data-pillar="ship">
                 <div style="font-size:15px;font-weight:400;color:var(--white);margin-bottom:6px;">Built to ship</div>
-                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Efficient. Effective. By design.</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.5;">We deliver production-grade platforms, not prototypes. Every system is designed for real-world deployment, handover, and long-term operation.</div>
               </div>
-              <div class="g4-cell" style="padding:18px 16px;">
+              <div class="g4-cell" style="padding:18px 16px;" data-pillar="outcomes">
                 <div style="font-size:15px;font-weight:400;color:var(--white);margin-bottom:6px;">Aligned outcomes</div>
-                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Defined early. Delivered consistently.</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.5;">Success metrics are co-defined at project kick-off and tracked well beyond delivery — ensuring quality is sustained across the full lifecycle, not just at handover.</div>
               </div>
             </div>
           </div>
@@ -2554,6 +2555,12 @@ function selectOutcome(id, card) {
       accDown = 0;
       if (accUp > SHOW_THRESHOLD) header.classList.remove('is-hidden');
     }
+    // Scroll progress bar
+    var sp = document.getElementById('scrollProgress');
+    if (sp) {
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      sp.style.width = docH > 0 ? (y / docH * 100) + '%' : '0';
+    }
     ticking = false;
   }
   window.addEventListener('scroll', () => {
@@ -2761,6 +2768,45 @@ function selectOutcome(id, card) {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && activeIdx !== -1 && !animating) reset();
   });
+})();
+
+/* ── STAT COUNT-UP ANIMATION ── */
+(function(){
+  var statNums = document.querySelectorAll('.stat-num');
+  if (!statNums.length) return;
+  var animated = false;
+
+  function countUp(el, target, suffix, duration) {
+    var start = 0, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var current = Math.round(ease * target);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !animated) {
+        animated = true;
+        statNums.forEach(function(el) {
+          var text = el.textContent.trim();
+          var num = parseInt(text.replace(/[^0-9]/g, ''), 10);
+          var suffix = text.replace(/[0-9]/g, '');
+          if (isNaN(num)) return;
+          el.textContent = '0' + suffix;
+          countUp(el, num, suffix, 1400);
+        });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  statNums.forEach(function(el) { io.observe(el); });
 })();
 
 /* ── TRUST STRIP TAB SWITCHER ── */
@@ -4334,6 +4380,10 @@ function togglePhase(n) {
     });
   });
 
+  // Auto-select first layer
+  var firstLayer = document.querySelector('.stack-layer');
+  if (firstLayer) firstLayer.click();
+
   // Delegated click on case study buttons inside detail panel
   detailEl.addEventListener('click', e => {
     const btn = e.target.closest('.sd-case-btn');
@@ -4485,7 +4535,7 @@ var AR = [
   ['#page-home .hero-ctas .btn-gold','text','ابدأ مشروعاً ←'],
 
   /* ── Home: Stats ── */
-  ['.stat-num','text','٥٠+',0],
+  ['.stat-num','text','٦٠+',0],
   ['.stat-num','text','٣',1],
   ['.stat-num','text','٦',2],
   ['.stat-label','html','باحثون في مختبرَين شريكَين<br>دوليَّين في الجامعات',0],
@@ -4493,7 +4543,7 @@ var AR = [
   ['.stat-label','html','دراسات حالة مُوصَّلة في الإنتاج<br>عبر خمسة قطاعات',2],
 
   /* ── Home: Trust strip ── */
-  ['.trust-tab','text','تم التسليم لصالح',0],
+  ['.trust-tab','text','المحفظة',0],
   ['.trust-tab','text','أوراق الاعتماد',1],
   ['.cred-title','text','حوكمة الذكاء الاصطناعي والبيانات',0],
   ['.cred-org','text','الاتحاد الدولي للاتصالات (ITU)',0],
@@ -4587,7 +4637,7 @@ var AR = [
   ['#page-home .eyebrow','text','لماذا نحن مختلفون',1],
   ['#page-home .display-md','text','حيث تلتقي العمق الأكاديمي بالابتكار التطبيقي.',0],
   ['#page-home .body-md','text','يُطوَّر بحثنا الأساسي بالتعاون مع مختبرات جامعية رائدة، مجمعاً قدرات بحثية دولية في الحوسبة المكانية وذكاء البيئة المبنية.',1],
-  ['#page-home .body-md','text','بفريق متمرس دولياً من الباحثين وخبراء الصناعة، نقدم حلولاً عالية الجودة في مجالات الواقع الممتد والتوأم الرقمي والتفاعل بين الإنسان والحاسوب.',2],
+  ['#page-home .body-md','text','بفريق متمرس دولياً من الباحثين وخبراء الصناعة، نقدم حلولاً عالية الجودة في مجالات الواقع الممتد والتوأم الرقمي والتفاعل بين الإنسان والحاسوب، مع تطبيق الصرامة الأكاديمية والمنهجيات المعيارية في كل مشروع تجاري.',2],
   ['#page-home .eyebrow','text','ركائزنا الأربع',2],
 
   /* ── Home: Four Pillars (g4-cell divs, targeted by text-match in JS) ── */
@@ -4863,7 +4913,7 @@ var ZH = [
   ['#page-home .hero-ctas .btn-gold','text','开始项目 ←'],
 
   /* ── Home: Stats ── */
-  ['.stat-num','text','50+',0],
+  ['.stat-num','text','60+',0],
   ['.stat-num','text','3',1],
   ['.stat-num','text','6',2],
   ['.stat-label','html','两所国际大学<br>合作实验室研究人员',0],
@@ -4871,7 +4921,7 @@ var ZH = [
   ['.stat-label','html','横跨五个行业<br>已交付落地案例',2],
 
   /* ── Home: Trust strip ── */
-  ['.trust-tab','text','服务客户',0],
+  ['.trust-tab','text','项目组合',0],
   ['.trust-tab','text','资质认证',1],
   ['.cred-title','text','人工智能与数据治理',0],
   ['.cred-org','text','国际电信联盟 (ITU)',0],
@@ -4965,7 +5015,7 @@ var ZH = [
   ['#page-home .eyebrow','text','我们的差异化',1],
   ['#page-home .display-md','text','学术深度与应用创新的交汇点。',0],
   ['#page-home .body-md','text','我们的基础研究与顶尖大学实验室合作开展，汇聚空间计算与建成环境智能领域的国际研究能力。',1],
-  ['#page-home .body-md','text','由国际化研究人员和行业专家组成的团队，在扩展现实、数字孪生和人机交互领域交付高质量解决方案。',2],
+  ['#page-home .body-md','text','由国际化研究人员和行业专家组成的团队，在扩展现实、数字孪生和人机交互领域交付高质量解决方案，将学术严谨性和标准级方法论融入每一个商业项目。',2],
   ['#page-home .eyebrow','text','我们的四大支柱',2],
 
   /* ── Home: Four Pillars — handled in mlApplyPillars() ── */
@@ -5238,7 +5288,7 @@ var FR = [
   ['#page-home .hero-ctas .btn-gold','text','Démarrer un projet ←'],
 
   /* ── Home: Stats ── */
-  ['.stat-num','text','50+',0],
+  ['.stat-num','text','60+',0],
   ['.stat-num','text','3',1],
   ['.stat-num','text','6',2],
   ['.stat-label','html','Chercheurs dans deux laboratoires<br>partenaires universitaires internationaux',0],
@@ -5246,7 +5296,7 @@ var FR = [
   ['.stat-label','html','Études de cas livrées en production<br>sur cinq secteurs',2],
 
   /* ── Home: Trust strip ── */
-  ['.trust-tab','text','Livré pour',0],
+  ['.trust-tab','text','Portfolio',0],
   ['.trust-tab','text','Accréditations',1],
   ['.cred-title','text','Gouvernance de l\'IA et des données',0],
   ['.cred-org','text','Union internationale des télécommunications (UIT)',0],
@@ -5340,7 +5390,7 @@ var FR = [
   ['#page-home .eyebrow','text','Pourquoi nous sommes différents',1],
   ['#page-home .display-md','text','Là où la profondeur académique rencontre l\'innovation appliquée.',0],
   ['#page-home .body-md','text','Notre recherche fondamentale est menée en collaboration avec des laboratoires universitaires de premier plan, rassemblant des capacités de recherche internationales en calcul spatial et en intelligence de l\'environnement bâti.',1],
-  ['#page-home .body-md','text','Avec une équipe internationale de chercheurs et d\'experts du secteur, nous livrons des solutions de haute qualité en XR, jumeau numérique et IHM.',2],
+  ['#page-home .body-md','text','Avec une équipe internationale de chercheurs et d\'experts du secteur, nous livrons des solutions de haute qualité en XR, jumeau numérique et IHM, en apportant la rigueur académique et une méthodologie de niveau normatif à chaque engagement commercial.',2],
   ['#page-home .eyebrow','text','Nos quatre piliers',2],
 
   /* ── Home: Page foot ── */
@@ -5636,33 +5686,33 @@ function mlApplyEntry(entry, dir){
 /* Four Pillars — translate by text-content matching */
 var PILLARS_AR = [
   ['Understand first','الفهم أولاً'],
-  ['Your vision first. Technology comes next.','رؤيتك أولاً. التكنولوجيا تأتي بعد ذلك.'],
+  ['Every project begins with structured discovery \u2014 mapping stakeholder needs, data landscapes, and technical constraints before a single line of code is written.','يبدأ كل مشروع باكتشاف منظّم — تحديد احتياجات أصحاب المصلحة والمشهد البياني والقيود التقنية قبل كتابة سطر واحد من الكود.'],
   ['Research-validated','مدعوم بالبحث'],
-  ['Academic-led. Industry-built. Realised with precision.','بقيادة أكاديمية. مبني بصناعية. مُنجَز بدقة.'],
+  ['Our methods are developed in collaboration with university research labs and validated against peer-reviewed standards \u2014 not just industry best-practice.','تُطوَّر أساليبنا بالتعاون مع مختبرات البحث الجامعية وتُصادَق وفقاً لمعايير مراجعة الأقران — وليس فقط أفضل الممارسات الصناعية.'],
   ['Built to ship','مبني للتشغيل'],
-  ['Efficient. Effective. By design.','فعّال. مؤثر. بالتصميم.'],
+  ['We deliver production-grade platforms, not prototypes. Every system is designed for real-world deployment, handover, and long-term operation.','نقدم منصات بمستوى الإنتاج، وليس نماذج أولية. كل نظام مصمم للنشر الفعلي والتسليم والتشغيل طويل الأمد.'],
   ['Aligned outcomes','نتائج متوافقة'],
-  ['Defined early. Delivered consistently.','مُحدَّدة مبكراً. مُسلَّمة باتساق.']
+  ['Success metrics are co-defined at project kick-off and tracked well beyond delivery \u2014 ensuring quality is sustained across the full lifecycle, not just at handover.','تُحدَّد مقاييس النجاح بشكل مشترك عند انطلاق المشروع وتُتابع لما بعد التسليم — لضمان استدامة الجودة عبر دورة الحياة الكاملة وليس فقط عند التسليم.']
 ];
 var PILLARS_ZH = [
   ['Understand first','先深入理解'],
-  ['Your vision first. Technology comes next.','您的愿景优先。技术随后而来。'],
+  ['Every project begins with structured discovery \u2014 mapping stakeholder needs, data landscapes, and technical constraints before a single line of code is written.','每个项目都从结构化探索开始——在编写任何一行代码之前，先梳理利益相关者需求、数据格局和技术约束。'],
   ['Research-validated','研究验证'],
-  ['Academic-led. Industry-built. Realised with precision.','学术引领。行业构建。精准落地。'],
+  ['Our methods are developed in collaboration with university research labs and validated against peer-reviewed standards \u2014 not just industry best-practice.','我们的方法与大学研究实验室合作开发，并以同行评审标准验证——而非仅遵循行业最佳实践。'],
   ['Built to ship','为交付而生'],
-  ['Efficient. Effective. By design.','高效。有效。源于设计。'],
+  ['We deliver production-grade platforms, not prototypes. Every system is designed for real-world deployment, handover, and long-term operation.','我们交付生产级平台，而非原型。每个系统都为实际部署、交接和长期运营而设计。'],
   ['Aligned outcomes','目标一致的成果'],
-  ['Defined early. Delivered consistently.','早期明确。持续交付。']
+  ['Success metrics are co-defined at project kick-off and tracked well beyond delivery \u2014 ensuring quality is sustained across the full lifecycle, not just at handover.','成功指标在项目启动时共同确定，并在交付后持续跟踪——确保质量贯穿整个生命周期，而非仅在交接时。']
 ];
 var PILLARS_FR = [
   ['Understand first','Comprendre d\'abord'],
-  ['Your vision first. Technology comes next.','Votre vision d\'abord. La technologie vient ensuite.'],
-  ['Research-validated','Validé par la recherche'],
-  ['Academic-led. Industry-built. Realised with precision.','Dirigé par l\'académie. Construit par l\'industrie. Réalisé avec précision.'],
-  ['Built to ship','Conçu pour livrer'],
-  ['Efficient. Effective. By design.','Efficace. Efficient. Par conception.'],
-  ['Aligned outcomes','Résultats alignés'],
-  ['Defined early. Delivered consistently.','Définis tôt. Livrés régulièrement.']
+  ['Every project begins with structured discovery \u2014 mapping stakeholder needs, data landscapes, and technical constraints before a single line of code is written.','Chaque projet commence par une d\u00e9couverte structur\u00e9e \u2014 cartographier les besoins des parties prenantes, les paysages de donn\u00e9es et les contraintes techniques avant d\u2019\u00e9crire une seule ligne de code.'],
+  ['Research-validated','Valid\u00e9 par la recherche'],
+  ['Our methods are developed in collaboration with university research labs and validated against peer-reviewed standards \u2014 not just industry best-practice.','Nos m\u00e9thodes sont d\u00e9velopp\u00e9es en collaboration avec des laboratoires de recherche universitaires et valid\u00e9es selon des standards \u00e9valu\u00e9s par des pairs \u2014 pas seulement les meilleures pratiques de l\u2019industrie.'],
+  ['Built to ship','Con\u00e7u pour livrer'],
+  ['We deliver production-grade platforms, not prototypes. Every system is designed for real-world deployment, handover, and long-term operation.','Nous livrons des plateformes de qualit\u00e9 production, pas des prototypes. Chaque syst\u00e8me est con\u00e7u pour un d\u00e9ploiement r\u00e9el, une passation et une exploitation \u00e0 long terme.'],
+  ['Aligned outcomes','R\u00e9sultats align\u00e9s'],
+  ['Success metrics are co-defined at project kick-off and tracked well beyond delivery \u2014 ensuring quality is sustained across the full lifecycle, not just at handover.','Les m\u00e9triques de succ\u00e8s sont co-d\u00e9finies au lancement du projet et suivies bien au-del\u00e0 de la livraison \u2014 garantissant une qualit\u00e9 maintenue sur tout le cycle de vie, pas seulement \u00e0 la passation.']
 ];
 var PILLARS_EN = null;
 
