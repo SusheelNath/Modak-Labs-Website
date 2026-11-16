@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,7 +121,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
 .topbar{background:var(--mid);border-bottom:1px solid var(--rim);padding:11px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .topbar-name{font-family:var(--ff-mono);font-size:10px;letter-spacing:0.12em;color:var(--muted2);text-transform:uppercase;}
 .topbar-pills{display:flex;gap:8px;flex-wrap:wrap;}
-.pill{font-size:9px;font-family:var(--ff-mono);padding:3px 9px;border-radius:20px;letter-spacing:0.05em;border:1px solid;white-space:nowrap;}
+.pill{font-size:9px;font-family:var(--ff-mono);padding:3px 9px;border-radius:20px;letter-spacing:0.05em;border:1px solid;white-space:nowrap;font-weight:600;}
 .pill-p1{border-color:#E8580F55;color:var(--gold);background:var(--gold-dim);}
 .pill-p2{border-color:#2abfae44;color:var(--teal);background:var(--teal-dim);}
 .pill-p3{border-color:#7b6cf055;color:#a09cf5;background:#7b6cf011;}
@@ -1241,19 +1241,30 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
 }
 
 /* ══ LANGUAGE DROPDOWN ══ */
-.lang-drop{position:relative;flex-shrink:0;margin-left:10px;}
-.lang-drop-trigger{
+/* ── header tool stack (globe + theme) ── */
+.hdr-tools{display:flex;flex-direction:column;gap:2px;margin-left:10px;flex-shrink:0;}
+.hdr-tool-btn{
   background:none;border:none;cursor:pointer;
-  width:34px;height:34px;border-radius:8px;
+  width:28px;height:28px;border-radius:6px;
   display:flex;align-items:center;justify-content:center;
   color:var(--gold);padding:0;
-  transition:background 0.15s;
+  transition:background 0.15s;position:relative;
 }
-.lang-drop-trigger:hover{background:rgba(232,88,15,0.14);}
+.hdr-tool-btn:hover{background:var(--gold-dim);}
+.hdr-tool-btn svg{display:block;pointer-events:none;}
+.lang-drop{position:relative;flex-shrink:0;}
+.lang-drop-trigger{
+  background:none;border:none;cursor:pointer;
+  width:28px;height:28px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);padding:0;
+  transition:background 0.15s;position:relative;
+}
+.lang-drop-trigger:hover{background:var(--gold-dim);}
 .lang-drop-trigger svg{display:block;pointer-events:none;}
 .lang-drop-menu{
   position:absolute;top:calc(100% + 6px);right:0;
-  background:#1a1a1a;
+  background:var(--surface);
   border:1px solid var(--rim2);
   border-radius:8px;overflow:hidden;
   min-width:144px;
@@ -1261,7 +1272,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
   transform:translateY(-6px);
   transition:opacity 0.15s,transform 0.15s;
   z-index:200;
-  box-shadow:0 8px 28px rgba(0,0,0,0.5);
+  box-shadow:0 8px 28px rgba(0,0,0,0.15);
 }
 .lang-drop.is-open .lang-drop-menu{opacity:1;pointer-events:auto;transform:translateY(0);}
 .lang-drop-item{
@@ -1270,10 +1281,10 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
   font-family:var(--ff-mono);font-size:11px;letter-spacing:0.1em;
   color:var(--muted);cursor:pointer;
   transition:color 0.12s,background 0.12s;
-  border-bottom:1px solid var(--rim1);
+  border-bottom:1px solid var(--rim);
 }
 .lang-drop-item:last-child{border-bottom:none;}
-.lang-drop-item:hover{color:var(--white);background:rgba(255,255,255,0.05);}
+.lang-drop-item:hover{color:var(--white);background:var(--rim);}
 .lang-drop-item.is-active{color:var(--gold);}
 /* Mobile language row */
 .mob-lang-row{display:flex;gap:8px;margin-top:12px;}
@@ -1292,7 +1303,7 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
   font-family:'Cairo',sans-serif;
 }
 [dir="rtl"] .lang-drop-menu{right:auto;left:0;direction:ltr;}
-[dir="rtl"] .lang-drop{margin-left:0;margin-right:10px;}
+[dir="rtl"] .hdr-tools{margin-left:0;margin-right:10px;}
 [dir="rtl"] body,
 [dir="rtl"] .body-lg,
 [dir="rtl"] .body-md,
@@ -1360,6 +1371,99 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
 [dir="rtl"] .mob-nav-links{text-align:right;}
 [dir="rtl"] .why-diff-card .g2{flex-direction:column;}
 [dir="rtl"] .mob-nav-wordmark{text-align:right;}
+/* ══════════════════════════════════════════════════
+   LIGHT MODE — cream bg, dark sidebar, deepened accents
+   ══════════════════════════════════════════════════ */
+[data-theme="light"]{
+  --void:#FAF7F3;--deep:#F0ECE6;--mid:#EAE6E0;--surface:#FFFFFF;
+  --rim:rgba(60,50,40,0.08);--rim2:rgba(60,50,40,0.14);--rim3:rgba(60,50,40,0.22);
+  --gold:#D44E0A;--gold-light:#C24409;--gold-dim:#D44E0A14;
+  --teal:#009E8E;--teal-dim:#009E8E14;--teal-light:#00B8A5;
+  --blue-soft:#0088BB;--blue-dim:#0088BB10;
+  --white:#1A1528;--muted:#5E5A6E;--muted2:#8A86A0;
+}
+/* ── dark-island: shared reset for elements that stay dark ── */
+[data-theme="light"] .ann-sidebar,
+[data-theme="light"] .mob-nav,
+[data-theme="light"] .dt-panel{
+  --void:#06040e;--deep:#09071a;--mid:#0e0c22;--surface:#14102e;
+  --rim:rgba(0,180,255,0.07);--rim2:rgba(0,180,255,0.13);--rim3:rgba(0,180,255,0.22);
+  --gold:#E8580F;--gold-light:#FF9A5C;--gold-dim:#E8580F26;
+  --teal:#00e8cc;--teal-dim:#00e8cc1a;--teal-light:#80f4ea;
+  --blue-soft:#00ccff;--blue-dim:#00ccff11;
+  --white:#ede8f5;--muted:#8a8fa8;--muted2:#5a6080;
+}
+[data-theme="light"] .ann-sidebar{background:var(--deep);border-right-color:var(--rim);}
+[data-theme="light"] .mob-nav{background:rgba(7,8,15,0.98);}
+[data-theme="light"] .dt-panel{background:var(--void);border-radius:6px;}
+/* header glass → warm cream glass */
+[data-theme="light"] .site-header{background:rgba(250,247,243,0.92);}
+/* hero-right overlay */
+[data-theme="light"] .hero-right{background:rgba(0,0,0,0.04);}
+/* hero glow — subtler on light */
+[data-theme="light"] .hero-glow{opacity:0.35;}
+/* hero grid — warm lines */
+[data-theme="light"] .hero-grid{background-image:linear-gradient(rgba(60,50,40,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(60,50,40,0.06) 1px,transparent 1px);}
+/* video placeholder bg */
+[data-theme="light"] .wc-video{background:linear-gradient(135deg,#E8E4DE 0%,#D8D4CE 100%);}
+/* play button */
+[data-theme="light"] .wc-play{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.15);}
+[data-theme="light"] .wc-case:hover .wc-play{background:rgba(255,255,255,0.90);}
+/* duration pill */
+[data-theme="light"] .wc-duration{background:rgba(0,0,0,0.6);color:#fff;}
+/* sb-right panel */
+[data-theme="light"] .sb-right{background:rgba(0,0,0,0.03);}
+/* hardcoded pill borders — deepen for light */
+[data-theme="light"] .pill-p1{border-color:#D44E0A44;background:#D44E0A10;}
+[data-theme="light"] .pill-p2{border-color:#009E8E44;background:#009E8E10;}
+[data-theme="light"] .pill-p3{border-color:#6B5CD844;color:#6B5CD8;background:#6B5CD80C;}
+[data-theme="light"] .pill-p4{border-color:#C85A4044;color:#C85A40;background:#C85A400C;}
+[data-theme="light"] .pill-p5{border-color:#0088BB44;background:#0088BB10;}
+/* hardcoded teal tags */
+[data-theme="light"] .cs-stack-tag,
+[data-theme="light"] .sd-tech-tag{background:#009E8E0C;border-color:#009E8E33;color:#009E8E;}
+/* JS-generated .sd-tag — override inline styles */
+[data-theme="light"] .sd-tag{color:#009E8E !important;background:#009E8E14 !important;border-color:#009E8E44 !important;}
+/* cert pill */
+[data-theme="light"] .cert-pill{background:#009E8E10;border-color:#009E8E55;color:#009E8E;}
+/* card hover minimized */
+[data-theme="light"] .g3.is-active .what-card.is-minimized:hover{border-color:var(--muted);box-shadow:0 0 0 1px var(--muted),0 14px 36px -20px rgba(0,0,0,0.12);}
+/* expanded card shadow */
+[data-theme="light"] .what-card.is-expanded{box-shadow:0 18px 40px -20px rgba(0,0,0,0.12);}
+/* gold button / CTA text stays readable */
+[data-theme="light"] .btn-gold,
+[data-theme="light"] .btn-submit,
+[data-theme="light"] .site-nav-cta,
+[data-theme="light"] .mob-nav-cta{color:#fff;}
+/* outline button */
+[data-theme="light"] .btn-outline{color:var(--white);border-color:var(--rim3);}
+/* quote text */
+[data-theme="light"] .case-quote{color:#8B4513;}
+/* scroll progress bar */
+[data-theme="light"] #scrollProgress{background:var(--gold);}
+/* team avatar */
+[data-theme="light"] .team-avatar{color:var(--gold);}
+/* inline color:#c8c5be on case-study methodology/outcome lists */
+[data-theme="light"] .side-card .body-sm{color:var(--muted) !important;}
+/* HCI scroll hints — tone down on cream */
+[data-theme="light"] #hciScrollHintTop{background:linear-gradient(to bottom,rgba(212,78,10,0.06) 0%,transparent 100%);}
+[data-theme="light"] #hciScrollHintBottom{background:linear-gradient(to top,rgba(212,78,10,0.06) 0%,transparent 100%);}
+/* calibration overlay stays dark */
+[data-theme="light"] #calibOverlay{background:rgba(7,8,15,0.92);}
+/* mobile theme toggle row */
+.mob-theme-row{display:flex;gap:8px;margin-top:8px;}
+.mob-theme-opt{
+  flex:1;padding:11px 0;text-align:center;
+  background:none;border:1px solid var(--rim2);border-radius:6px;
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:0.1em;
+  color:var(--muted);cursor:pointer;
+  transition:color 0.12s,border-color 0.12s,background 0.12s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.mob-theme-opt:hover{color:var(--white);border-color:var(--gold);}
+.mob-theme-opt.is-active{color:var(--gold);border-color:var(--gold);background:rgba(232,88,15,0.08);}
+.mob-theme-opt svg{width:14px;height:14px;}
+
 </style>
 </head>
 <body>
@@ -1381,6 +1485,16 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
       <button class="mob-lang-opt" id="mobLangOptAR" onclick="mlSetLang('ar');closeMobNav()">AR</button>
       <button class="mob-lang-opt" id="mobLangOptZH" onclick="mlSetLang('zh');closeMobNav()">ZH</button>
       <button class="mob-lang-opt" id="mobLangOptFR" onclick="mlSetLang('fr');closeMobNav()">FR</button>
+    </div>
+    <div class="mob-theme-row">
+      <button class="mob-theme-opt" id="mobThemeDark" onclick="mlSetTheme('dark')">
+        <svg width="14" height="14" viewBox="0 0 17 17" fill="none"><path d="M14.5 9.2A6.5 6.5 0 0 1 7.8 2.5a6.5 6.5 0 1 0 6.7 6.7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Dark
+      </button>
+      <button class="mob-theme-opt is-active" id="mobThemeLight" onclick="mlSetTheme('light')">
+        <svg width="14" height="14" viewBox="0 0 17 17" fill="none"><circle cx="8.5" cy="8.5" r="3.5" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 1.5v2M8.5 13.5v2M1.5 8.5h2M13.5 8.5h2M3.55 3.55l1.41 1.41M12.04 12.04l1.41 1.41M13.45 3.55l-1.41 1.41M4.96 12.04l-1.41 1.41" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Light
+      </button>
     </div>
   </nav>
 </div>
@@ -1411,16 +1525,21 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
       <button class="site-nav-link" id="nav-about" onclick="showPage('about',document.querySelectorAll('.nav-item')[3]);setHeaderActive('nav-about')">About</button>
       <button class="site-nav-cta" onclick="showPage('contact',document.querySelectorAll('.nav-item')[4]);setHeaderActive('nav-contact')">Start a Project →</button>
     </nav>
-    <div class="lang-drop" id="langDrop">
-      <button class="lang-drop-trigger" id="langBtn" onclick="mlLangDropToggle()" aria-label="Language selector" aria-expanded="false">
-        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8.5" cy="8.5" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 1.5C7 3.6 6 5.9 6 8.5s1 4.9 2.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8.5 1.5C10 3.6 11 5.9 11 8.5s-1 4.9-2.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M1.5 6.5h14M1.5 10.5h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      </button>
-      <div class="lang-drop-menu" id="langDropMenu">
-        <button class="lang-drop-item is-active" id="langOptEN" onclick="mlSetLang('en')">EN · English</button>
-        <button class="lang-drop-item" id="langOptAR" onclick="mlSetLang('ar')">AR · العربية</button>
-        <button class="lang-drop-item" id="langOptZH" onclick="mlSetLang('zh')">ZH · 中文</button>
-        <button class="lang-drop-item" id="langOptFR" onclick="mlSetLang('fr')">FR · Français</button>
+    <div class="hdr-tools">
+      <div class="lang-drop" id="langDrop">
+        <button class="lang-drop-trigger" id="langBtn" onclick="mlLangDropToggle()" aria-label="Language">
+          <svg width="15" height="15" viewBox="0 0 17 17" fill="none"><circle cx="8.5" cy="8.5" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 1.5C7 3.6 6 5.9 6 8.5s1 4.9 2.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8.5 1.5C10 3.6 11 5.9 11 8.5s-1 4.9-2.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M1.5 6.5h14M1.5 10.5h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="lang-drop-menu" id="langDropMenu">
+          <button class="lang-drop-item is-active" id="langOptEN" onclick="mlSetLang('en')">EN · English</button>
+          <button class="lang-drop-item" id="langOptAR" onclick="mlSetLang('ar')">AR · العربية</button>
+          <button class="lang-drop-item" id="langOptZH" onclick="mlSetLang('zh')">ZH · 中文</button>
+          <button class="lang-drop-item" id="langOptFR" onclick="mlSetLang('fr')">FR · Français</button>
+        </div>
       </div>
+      <button class="hdr-tool-btn" id="themeToggle" aria-label="Dark mode">
+        <svg width="15" height="15" viewBox="0 0 17 17" fill="none"><path d="M14.5 9.2A6.5 6.5 0 0 1 7.8 2.5a6.5 6.5 0 1 0 6.7 6.7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
     </div>
     <button class="ham-btn" id="hamBtn" aria-label="Open menu" aria-expanded="false">
@@ -2165,8 +2284,8 @@ body{background:var(--void);color:var(--white);font-family:var(--ff-body);font-s
           <div class="eyebrow">Who we collaborate with</div>
           <div class="display-md" style="font-size:22px;margin-bottom:14px;">Two international<br>university research groups</div>
           <p class="body-md" style="margin-bottom:24px;line-height:1.8;">Built on genuine academic collaboration — our university partners contribute to methodology, rigour, and specialised expertise from day one.</p>
-          <div class="univ-card"><div class="univ-desc">20+ researchers in spatial computing, HCI, and immersive systems design. Active on all XR and interaction deliverables.</div></div>
-          <div class="univ-card"><div class="univ-desc">30+ researchers in built-environment intelligence, urban data science, and climate-responsive systems. Active on all digital twin and smart city work.</div></div>
+          <div class="univ-card"><div class="univ-desc">25+ researchers in spatial computing, HCI, and immersive systems design. Active on all XR and interaction deliverables.</div></div>
+          <div class="univ-card"><div class="univ-desc">35+ researchers in built-environment intelligence, urban data science, and climate-responsive systems. Active on all digital twin and smart city work.</div></div>
         </div>
         <div class="card">
           <div class="eyebrow">Where we work</div>
@@ -6184,4 +6303,34 @@ document.addEventListener('DOMContentLoaded', function(){
     <span class="hci-scroll-hint-arrow">▼</span>
   </div>
 </div>
+<script>
+(function(){
+  var sunSVG='<svg width="15" height="15" viewBox="0 0 17 17" fill="none"><circle cx="8.5" cy="8.5" r="3.5" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 1.5v2M8.5 13.5v2M1.5 8.5h2M13.5 8.5h2M3.55 3.55l1.41 1.41M12.04 12.04l1.41 1.41M13.45 3.55l-1.41 1.41M4.96 12.04l-1.41 1.41" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
+  var moonSVG='<svg width="15" height="15" viewBox="0 0 17 17" fill="none"><path d="M14.5 9.2A6.5 6.5 0 0 1 7.8 2.5a6.5 6.5 0 1 0 6.7 6.7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var btn=document.getElementById('themeToggle');
+  var mobDark=document.getElementById('mobThemeDark');
+  var mobLight=document.getElementById('mobThemeLight');
+  window.mlSetTheme=function(t){
+    if(t==='light'){
+      document.documentElement.setAttribute('data-theme','light');
+      btn.innerHTML=moonSVG;
+
+      btn.setAttribute('aria-label','Dark mode');
+    }else{
+      document.documentElement.removeAttribute('data-theme');
+      btn.innerHTML=sunSVG;
+
+      btn.setAttribute('aria-label','Light mode');
+    }
+    if(mobDark&&mobLight){
+      mobDark.classList.toggle('is-active',t!=='light');
+      mobLight.classList.toggle('is-active',t==='light');
+    }
+  };
+  btn.addEventListener('click',function(){
+    var isLight=document.documentElement.getAttribute('data-theme')==='light';
+    mlSetTheme(isLight?'dark':'light');
+  });
+})();
+</script>
 
